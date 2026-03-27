@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Estratégico DDHH - Cencosud</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        /* Custom scrollbar para secciones internas */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 h-screen flex overflow-hidden">
+
+    <div class="w-64 bg-blue-900 text-white flex flex-col shadow-xl z-10 shrink-0">
+        <div class="p-6 bg-blue-950">
+            <h1 class="text-2xl font-bold tracking-tight">Cencosud</h1>
+            <p class="text-blue-200 text-xs mt-1 uppercase tracking-wider font-semibold">Diagnóstico UC 2025</p>
+        </div>
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <button id="btn-intro" onclick="switchTab('intro')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 bg-blue-600 text-white shadow-md">
+                <i data-lucide="info" class="w-5 h-5 text-blue-200 icon-active"></i>
+                <span class="font-medium text-sm">Introducción al Estudio</span>
+            </button>
+            <button id="btn-resumen" onclick="switchTab('resumen')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 text-blue-100 hover:bg-blue-800 hover:text-white">
+                <i data-lucide="bar-chart-3" class="w-5 h-5 text-blue-300 icon-active"></i>
+                <span class="font-medium text-sm">Resumen de la Industria</span>
+            </button>
+            <button id="btn-brechas" onclick="switchTab('brechas')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 text-blue-100 hover:bg-blue-800 hover:text-white">
+                <i data-lucide="activity" class="w-5 h-5 text-blue-300 icon-active"></i>
+                <span class="font-medium text-sm">Desempeño Cencosud</span>
+            </button>
+            <button id="btn-proyecto" onclick="switchTab('proyecto')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 text-blue-100 hover:bg-blue-800 hover:text-white">
+                <i data-lucide="target" class="w-5 h-5 text-blue-300 icon-active"></i>
+                <span class="font-medium text-sm">Impacto Piloto Paris</span>
+            </button>
+            <button id="btn-benchmark" onclick="switchTab('benchmark')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 text-blue-100 hover:bg-blue-800 hover:text-white">
+                <i data-lucide="search" class="w-5 h-5 text-blue-300 icon-active"></i>
+                <span class="font-medium text-sm">Benchmark Retail</span>
+            </button>
+            <button id="btn-roadmap" onclick="switchTab('roadmap')" class="tab-btn w-full flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 text-blue-100 hover:bg-blue-800 hover:text-white">
+                <i data-lucide="map" class="w-5 h-5 text-blue-300 icon-active"></i>
+                <span class="font-medium text-sm">Roadmap Estratégico</span>
+            </button>
+        </nav>
+    </div>
+
+    <div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+        <div class="max-w-6xl mx-auto">
+            
+            <header class="mb-8 flex justify-between items-end border-b border-gray-200 pb-4">
+                <div>
+                    <h2 id="header-title" class="text-3xl font-bold text-gray-900">Introducción al Estudio</h2>
+                    <p id="header-subtitle" class="text-gray-500 mt-2">Metodología y alcance del Cuarto Diagnóstico Empresas y DDHH UC 2025.</p>
+                </div>
+                <div class="flex items-center space-x-2 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                    <span class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></span>
+                    <span class="text-sm font-medium text-gray-600">Base Metodológica</span>
+                </div>
+            </header>
+
+            <div id="content-intro" class="tab-content space-y-6 animate-fadeIn">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 border-t-4 border-t-blue-600">
+                        <div class="flex items-center mb-4">
+                            <div class="p-2 bg-blue-50 text-blue-600 rounded-lg mr-3">
+                                <i data-lucide="book-open" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800">Marco Metodológico</h3>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Este diagnóstico utiliza la metodología global de la <strong>Corporate Human Rights Benchmark (CHRB)</strong> de la World Benchmarking Alliance, en su versión <strong>CORE UNGP</strong>.
+                        </p>
+                        <p class="text-sm text-gray-600 mb-3">
+                            Se sustenta <strong>exclusivamente en información pública</strong> reportada por las empresas, como memorias anuales y reportes de sostenibilidad (GRI, Pacto Global, NCG 461 de la CMF). No busca identificar impactos o vulneraciones específicas, sino evaluar el grado de <em>institucionalización</em> de políticas y sistemas de gestión corporativa.
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 border-t-4 border-t-indigo-500">
+                        <div class="flex items-center mb-4">
+                            <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg mr-3">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-800">La Muestra (2025)</h3>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-indigo-500 mr-2 mt-0.5"></i>
+                                <span><strong>28 Empresas Privadas:</strong> Correspondientes a las compañías que forman parte del Índice de Precios Selectivos de Acciones (IPSA).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-indigo-500 mr-2 mt-0.5"></i>
+                                <span><strong>15 Empresas Públicas:</strong> Seleccionadas por su escala económica y relevancia estratégica (ej. Metro, Codelco, Banco Estado).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-indigo-500 mr-2 mt-0.5"></i>
+                                <span><strong>Sector Minero:</strong> Se incluyó un análisis cualitativo adicional a empresas mineras operando en Chile con matrices internacionales.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Estructura de Evaluación (24 Puntos en Total)</h3>
+                    <p class="text-gray-500 text-sm mb-6">El modelo evalúa 12 indicadores agrupados en tres pilares fundamentales que reflejan las expectativas de los Principios Rectores de la ONU.</p>
+
+                    <div class="space-y-6">
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <div class="bg-gray-50 border-b border-gray-200 p-4 flex justify-between items-center">
+                                <h4 class="font-bold text-gray-800 flex items-center">
+                                    <span class="bg-blue-200 text-blue-800 w-6 h-6 rounded flex items-center justify-center text-xs mr-3">A</span>
+                                    Pilar A: Compromisos y Gobernanza
+                                </h4>
+                                <span class="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-full text-sm">Máx: 6 Puntos</span>
+                            </div>
+                            <div class="p-4">
+                                <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>A.1:</strong> Compromiso de respeto de los DDHH.</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>A.2:</strong> Compromiso de respeto a trabajadores (OIT).</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>A.3:</strong> Compromiso de remediar.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg overflow-hidden border-l-4 border-l-orange-400">
+                            <div class="bg-gray-50 border-b border-gray-200 p-4 flex justify-between items-center">
+                                <h4 class="font-bold text-gray-800 flex items-center">
+                                    <span class="bg-orange-200 text-orange-800 w-6 h-6 rounded flex items-center justify-center text-xs mr-3">B</span>
+                                    Pilar B: Sistemas de Identificación y Gestión de Riesgos (Debida Diligencia)
+                                </h4>
+                                <span class="bg-orange-100 text-orange-800 font-bold px-3 py-1 rounded-full text-sm">Máx: 12 Puntos</span>
+                            </div>
+                            <div class="p-4">
+                                <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>B.1:</strong> Responsabilidad y asignación de recursos.</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>B.2:</strong> Identificación de riesgos e impactos.</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>B.3:</strong> Evaluación de riesgos e impactos.</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>B.4:</strong> Integración y acción respecto a riesgos.</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>B.5:</strong> Seguimiento de efectividad de acciones.</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>B.6:</strong> Comunicación sobre impactos.</li>
+                                </ul>
+                                <p class="text-xs text-orange-600 mt-3 italic">* Este es el pilar con mayor ponderación en la metodología y donde se focaliza la brecha más grande de Cencosud.</p>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <div class="bg-gray-50 border-b border-gray-200 p-4 flex justify-between items-center">
+                                <h4 class="font-bold text-gray-800 flex items-center">
+                                    <span class="bg-green-200 text-green-800 w-6 h-6 rounded flex items-center justify-center text-xs mr-3">C</span>
+                                    Pilar C: Mecanismos de Reclamación y Reparación
+                                </h4>
+                                <span class="bg-green-100 text-green-800 font-bold px-3 py-1 rounded-full text-sm">Máx: 6 Puntos</span>
+                            </div>
+                            <div class="p-4">
+                                <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>C.1:</strong> Mecanismos de reclamación para trabajadores.</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>C.2:</strong> Mecanismos de reclamación para externos.</li>
+                                    <li class="bg-white p-3 rounded border border-gray-100 shadow-sm"><strong>C.3:</strong> Remediación de impactos adversos.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="content-resumen" class="tab-content hidden space-y-6 animate-fadeIn">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 border-l-4 border-l-red-500">
+                        <h3 class="text-gray-500 text-xs font-bold uppercase tracking-wider">Cencosud</h3>
+                        <div class="mt-1 flex items-baseline">
+                            <span class="text-3xl font-extrabold text-red-600">25%</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 mt-1">Brecha crítica en debida diligencia.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 border-l-4 border-l-gray-400">
+                        <h3 class="text-gray-500 text-xs font-bold uppercase tracking-wider">Promedio Nacional</h3>
+                        <div class="mt-1 flex items-baseline">
+                            <span class="text-3xl font-extrabold text-gray-700">52%</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 mt-1">Promedio General IPSA 2025.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 border-l-4 border-l-blue-400">
+                        <h3 class="text-gray-500 text-xs font-bold uppercase tracking-wider">Promedio Retail</h3>
+                        <div class="mt-1 flex items-baseline">
+                            <span class="text-3xl font-extrabold text-blue-600">45%</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 mt-1">Empujado por líderes del sector.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 border-l-4 border-l-green-500">
+                        <h3 class="text-gray-500 text-xs font-bold uppercase tracking-wider">Líder (Falabella)</h3>
+                        <div class="mt-1 flex items-baseline">
+                            <span class="text-3xl font-extrabold text-green-600">96%</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 mt-1">Mejor desempeño de Chile 2025.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+                    <h3 class="text-lg font-bold text-gray-800 mb-6">Desempeño Comparado: Sector Retail vs Promedio General</h3>
+                    
+                    <div class="space-y-5">
+                        <div class="flex items-center">
+                            <div class="w-32 text-sm font-semibold text-gray-700 text-right pr-4">Falabella</div>
+                            <div class="flex-1 bg-gray-100 rounded-md h-6 overflow-hidden flex items-center">
+                                <div class="bg-green-500 h-full" style="width: 96%"></div>
+                            </div>
+                            <span class="ml-3 text-sm font-bold text-gray-700 w-10">96%</span>
+                        </div>
+                        <div class="flex items-center pt-2 pb-2 border-y border-dashed border-gray-300 my-2">
+                            <div class="w-32 text-xs font-bold uppercase tracking-wider text-gray-500 text-right pr-4">Prom. IPSA</div>
+                            <div class="flex-1 bg-gray-100 rounded-md h-4 overflow-hidden flex items-center">
+                                <div class="bg-gray-400 h-full" style="width: 52%"></div>
+                            </div>
+                            <span class="ml-3 text-xs font-bold text-gray-500 w-10">52%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-32 text-sm font-medium text-gray-600 text-right pr-4">Ripley</div>
+                            <div class="flex-1 bg-gray-100 rounded-md h-6 overflow-hidden flex items-center">
+                                <div class="bg-blue-400 h-full" style="width: 33%"></div>
+                            </div>
+                            <span class="ml-3 text-sm font-bold text-gray-700 w-10">33%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-32 text-sm font-medium text-gray-600 text-right pr-4">SMU</div>
+                            <div class="flex-1 bg-gray-100 rounded-md h-6 overflow-hidden flex items-center">
+                                <div class="bg-blue-500 h-full" style="width: 75%"></div>
+                            </div>
+                            <span class="ml-3 text-sm font-bold text-gray-700 w-10">75%</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-32 text-sm font-bold text-gray-900 text-right pr-4">Cencosud</div>
+                            <div class="flex-1 bg-gray-100 rounded-md h-6 overflow-hidden flex items-center shadow-inner">
+                                <div class="bg-red-500 h-full shadow-md" style="width: 25%"></div>
+                            </div>
+                            <span class="ml-3 text-sm font-extrabold text-red-600 w-10">25%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-brechas" class="tab-content hidden space-y-6 animate-fadeIn">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-4">
+                    <p class="text-gray-600 text-sm">Análisis detallado de la evaluación 2025 para Cencosud. El diagnóstico no es un "cero absoluto"; reconoce avances organizacionales, pero castiga severamente la falta de formalidad en cadena de suministro.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white border-t-4 border-t-green-500 rounded-xl shadow-sm overflow-hidden flex flex-col h-full">
+                        <div class="bg-green-50 p-4 border-b border-green-100 flex items-center">
+                            <i data-lucide="check-circle-2" class="text-green-600 w-6 h-6 mr-2"></i>
+                            <h3 class="text-lg font-bold text-green-800">Fortalezas (Lo Logrado)</h3>
+                        </div>
+                        <div class="p-6 space-y-6 flex-1 bg-white">
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm mb-1">A. Compromisos Básicos</h4>
+                                <p class="text-xs text-gray-600">Mención de respeto a DDHH en la Memoria Anual y en el Código de Ética corporativo. Reconocimiento público de los estándares de la OIT.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm mb-1">B. Diversidad e Inclusión (Impactos Internos)</h4>
+                                <p class="text-xs text-gray-600">Políticas robustas hacia colaboradores directos (Ley de Inclusión, equidad de género, Sello Iguala). Mitigación de riesgos laborales internos.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-sm mb-1">C. Línea Ética (Canal de Denuncias)</h4>
+                                <p class="text-xs text-gray-600">Existencia de una plataforma "Línea Ética Cencosud" operativa, anónima y administrada por un tercero independiente, disponible para colaboradores.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border-t-4 border-t-red-500 rounded-xl shadow-sm overflow-hidden flex flex-col h-full">
+                        <div class="bg-red-50 p-4 border-b border-red-100 flex items-center">
+                            <i data-lucide="alert-octagon" class="text-red-600 w-6 h-6 mr-2"></i>
+                            <h3 class="text-lg font-bold text-red-800">Brechas (Por Mejorar)</h3>
+                        </div>
+                        <div class="p-6 space-y-6 flex-1 bg-white">
+                            <div>
+                                <h4 class="font-bold text-red-700 text-sm mb-1">A. Falta de Política Exclusiva de DDHH</h4>
+                                <p class="text-xs text-gray-600">No existe un documento formal llamado "Política de DDHH" firmado por el Directorio (exigencia estricta de la metodología CHRB/UC). <span class="block mt-1 font-semibold text-red-600">Costo: -6 puntos.</span></p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-red-700 text-sm mb-1">B. Nula Visibilidad en Cadena de Suministro</h4>
+                                <p class="text-xs text-gray-600">Ausencia total de reportabilidad sobre cómo se evalúan los riesgos de trabajo forzoso o condiciones inseguras en fábricas proveedoras (Asia, etc.). No hay publicación de Planes de Acción (CAPs). <span class="block mt-1 font-semibold text-red-600">Costo: -9 puntos.</span></p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-red-700 text-sm mb-1">C. Remediación a Terceros (Proveedores)</h4>
+                                <p class="text-xs text-gray-600">La línea ética actual está enfocada en fraude interno/empleados. Faltan mecanismos específicos para que trabajadores de proveedores puedan reclamar abusos. <span class="block mt-1 font-semibold text-red-600">Costo: -3 puntos.</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-proyecto" class="tab-content hidden space-y-6 animate-fadeIn">
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-1/3 bg-gray-900 rounded-xl p-6 text-white shadow-lg flex flex-col justify-center">
+                        <h3 class="text-gray-400 text-sm uppercase tracking-wider font-bold mb-4">Impacto en Evaluación UC</h3>
+                        <div class="flex justify-between items-end mb-2 border-b border-gray-700 pb-2">
+                            <span class="text-gray-300 text-sm">Puntaje Actual (Pilar B):</span>
+                            <span class="text-2xl font-bold text-red-400">3.0 <span class="text-sm font-normal">pts</span></span>
+                        </div>
+                        <div class="flex justify-between items-end mb-4 pt-2">
+                            <span class="text-white font-medium">Potencial con Proyecto Paris:</span>
+                            <span class="text-4xl font-extrabold text-green-400">+9.0 <span class="text-sm font-normal text-green-200">pts</span></span>
+                        </div>
+                        <p class="text-xs text-gray-400 italic">El Piloto ataca directo el "core" de la deficiencia metodológica en el Pilar B.</p>
+                    </div>
+
+                    <div class="w-full md:w-2/3 bg-blue-50 border border-blue-100 rounded-xl p-6 flex items-center">
+                        <div>
+                            <div class="flex items-center space-x-3 mb-2">
+                                <i data-lucide="target" class="w-6 h-6 text-blue-600"></i>
+                                <h3 class="text-xl font-bold text-blue-900">Desglose de Captura de Valor: Piloto Paris</h3>
+                            </div>
+                            <p class="text-sm text-blue-800">Cómo los entregables de la consultoría se traducen matemáticamente en puntos para el próximo diagnóstico y cuáles son las condiciones de éxito interno.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-700 border-b border-gray-200 text-sm">
+                                <th class="p-4 font-bold">Componente del Proyecto</th>
+                                <th class="p-4 font-bold text-center">Puntaje Capturable</th>
+                                <th class="p-4 font-bold">Supuestos Críticos Internos (Condición de Éxito)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-4 align-top">
+                                    <h5 class="font-bold text-gray-800 text-sm">1. Mapeo y Auditoría de Riesgos</h5>
+                                    <p class="text-xs text-gray-500 mt-1">Evaluación documental y auditorías in situ en fábricas (China, India, Bangladesh) sobre trabajo forzoso y horas extras.</p>
+                                </td>
+                                <td class="p-4 align-top text-center">
+                                    <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-green-100 text-green-700 font-bold text-sm">
+                                        +3.0 pts
+                                    </span>
+                                </td>
+                                <td class="p-4 align-top">
+                                    <ul class="list-disc pl-4 text-xs text-gray-600 space-y-1">
+                                        <li>Proveedores críticos responden efectivamente a las solicitudes de información y permiten acceso a fábricas.</li>
+                                        <li>Cencosud transparenta la "Matriz de Riesgo" generada en su sitio web.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-4 align-top">
+                                    <h5 class="font-bold text-gray-800 text-sm">2. Planes de Acción Correctiva (CAPs)</h5>
+                                    <p class="text-xs text-gray-500 mt-1">Generación de semaforización y exigencia de cierres de brecha a proveedores con incumplimientos.</p>
+                                </td>
+                                <td class="p-4 align-top text-center">
+                                    <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-green-100 text-green-700 font-bold text-sm">
+                                        +4.0 pts
+                                    </span>
+                                </td>
+                                <td class="p-4 align-top">
+                                    <ul class="list-disc pl-4 text-xs text-gray-600 space-y-1">
+                                        <li>El Área Comercial de Paris <strong>respalda</strong> las suspensiones a proveedores críticos ("Rojo") que no cumplan el CAP.</li>
+                                        <li>Se integra la cláusula DDHH en los nuevos contratos.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <td class="p-4 align-top">
+                                    <h5 class="font-bold text-gray-800 text-sm">3. Dashboards y Reportabilidad</h5>
+                                    <p class="text-xs text-gray-500 mt-1">Entrega de métricas procesadas y estructuradas sobre hallazgos en la cadena de suministro.</p>
+                                </td>
+                                <td class="p-4 align-top text-center">
+                                    <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-green-100 text-green-700 font-bold text-sm">
+                                        +2.0 pts
+                                    </span>
+                                </td>
+                                <td class="p-4 align-top">
+                                    <ul class="list-disc pl-4 text-xs text-gray-600 space-y-1">
+                                        <li>Cencosud debe incluir estos gráficos y datos duros en la <strong>Memoria Anual Integrada</strong>.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="content-benchmark" class="tab-content hidden animate-fadeIn flex flex-col h-[75vh]">
+                <div class="bg-gray-800 text-white p-5 rounded-t-xl shrink-0 flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold">Análisis de la Competencia</h3>
+                        <p class="text-sm text-gray-400">¿Qué iniciativas concretas otorgan puntaje en la industria?</p>
+                    </div>
+                    <i data-lucide="search" class="w-6 h-6 text-gray-400"></i>
+                </div>
+
+                <div class="bg-white border border-t-0 border-gray-200 rounded-b-xl flex-1 overflow-y-auto custom-scrollbar p-6 space-y-8 shadow-sm relative">
+                    <div class="relative border-2 border-green-500 rounded-xl p-6 bg-green-50">
+                        <div class="absolute -top-4 right-6 bg-green-500 text-white font-bold px-4 py-1 rounded-full text-sm shadow-md">
+                            Líder Nacional: 96%
+                        </div>
+                        <div class="flex items-center space-x-3 mb-4 border-b border-green-200 pb-4">
+                            <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-green-600 font-extrabold text-xl shadow-sm border border-green-100">F</div>
+                            <h4 class="text-xl font-bold text-green-900">Falabella S.A.</h4>
+                        </div>
+                        <p class="text-sm text-green-800 mb-4 font-medium">Acciones Concretas que explican su puntaje casi perfecto:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border border-green-100 shadow-sm">
+                                <h5 class="font-bold text-gray-800 text-sm flex items-center"><i data-lucide="file-text" class="w-4 h-4 mr-2 text-green-600"></i> 1. Gobernanza</h5>
+                                <p class="text-xs text-gray-600 mt-2">Política explícita aprobada por el Directorio. Creación del cargo "Oficial de Cumplimiento DDHH" a nivel holding.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-green-100 shadow-sm">
+                                <h5 class="font-bold text-gray-800 text-sm flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-green-600"></i> 2. Auditorías Masivas</h5>
+                                <p class="text-xs text-gray-600 mt-2">Realizan más de 2.000 auditorías SMETA al año a proveedores de Asia y Latam, exigiendo planes de acción (CAP).</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-green-100 shadow-sm">
+                                <h5 class="font-bold text-gray-800 text-sm flex items-center"><i data-lucide="shield-alert" class="w-4 h-4 mr-2 text-green-600"></i> 3. Defensoría</h5>
+                                <p class="text-xs text-gray-600 mt-2">Crearon la "Defensoría de Vendedores y Proveedores" como canal formal de mediación independiente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-roadmap" class="tab-content hidden animate-fadeIn flex flex-col h-[75vh]">
+                <div class="bg-blue-900 text-white p-6 rounded-t-xl shrink-0">
+                    <h3 class="text-2xl font-bold mb-1">Roadmap Cencosud 2025-2027</h3>
+                    <p class="text-blue-200 text-sm">Hoja de ruta secuencial para alcanzar el 90%+ y el liderazgo ASG.</p>
+                </div>
+                <div class="bg-white border border-t-0 border-gray-200 rounded-b-xl flex-1 overflow-y-auto custom-scrollbar p-8 relative">
+                    <div class="absolute left-12 top-10 bottom-10 w-1 bg-gray-200"></div>
+                    <div class="space-y-12">
+                        <div class="relative flex items-start">
+                            <div class="w-10 h-10 bg-blue-600 rounded-full border-4 border-white shadow flex items-center justify-center text-white z-10 shrink-0 ml-1">1</div>
+                            <div class="ml-6 flex-1">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+                                    <h4 class="text-xl font-bold text-gray-800">Q3-Q4 2025: Ejecución Piloto Paris</h4>
+                                    <span class="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-sm mt-2 md:mt-0 flex items-center"><i data-lucide="trending-up" class="w-4 h-4 mr-1"></i> +9 pts</span>
+                                </div>
+                                <p class="text-sm text-gray-600 bg-gray-50 p-4 rounded border border-gray-100">Implementar debida diligencia textil. Mapear fábricas, auditar in situ y generar Planes de Acción Correctiva (CAPs).</p>
+                            </div>
+                        </div>
+                        <div class="relative flex items-start">
+                            <div class="w-10 h-10 bg-gray-400 rounded-full border-4 border-white shadow flex items-center justify-center text-white z-10 shrink-0 ml-1">2</div>
+                            <div class="ml-6 flex-1">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+                                    <h4 class="text-xl font-bold text-gray-800">Q1 2026: Política y Gobernanza</h4>
+                                    <span class="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-sm mt-2 md:mt-0 flex items-center"><i data-lucide="trending-up" class="w-4 h-4 mr-1"></i> +6 pts</span>
+                                </div>
+                                <p class="text-sm text-gray-600 bg-gray-50 p-4 rounded border border-gray-100">Aprobar y publicar una Política de DDHH a nivel corporativo, visada por el Directorio (cierra la brecha del Pilar A).</p>
+                            </div>
+                        </div>
+                        <div class="relative flex items-start">
+                            <div class="w-10 h-10 bg-gray-400 rounded-full border-4 border-white shadow flex items-center justify-center text-white z-10 shrink-0 ml-1">3</div>
+                            <div class="ml-6 flex-1">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-3">
+                                    <h4 class="text-xl font-bold text-gray-800">H2 2026: Scale-up Institucional</h4>
+                                    <span class="bg-green-100 text-green-700 font-bold px-3 py-1 rounded-full text-sm mt-2 md:mt-0 flex items-center"><i data-lucide="trending-up" class="w-4 h-4 mr-1"></i> +5 pts</span>
+                                </div>
+                                <p class="text-sm text-gray-600 bg-gray-50 p-4 rounded border border-gray-100">Exportar el modelo de gestión de proveedores (CAPs, auditorías) a Easy y Jumbo. Estandarizar exigencias corporativas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const tabTitles = {
+            'intro': { title: 'Introducción al Estudio', subtitle: 'Metodología, muestra y alcance del Cuarto Diagnóstico Empresas y DDHH UC 2025.' },
+            'resumen': { title: 'Resumen de la Industria', subtitle: 'Contexto global del retail y promedio transversal de empresas.' },
+            'brechas': { title: 'Desempeño Cencosud', subtitle: 'Análisis de Fortalezas y Brechas según metodología UC.' },
+            'proyecto': { title: 'Impacto Piloto Paris', subtitle: 'Ruta de captura de puntaje mediante el proyecto de Proyecta Impacto.' },
+            'benchmark': { title: 'Benchmark Retail', subtitle: 'Prácticas y acciones clave de los competidores directos.' },
+            'roadmap': { title: 'Roadmap Estratégico', subtitle: 'Iniciativas secuenciales para alcanzar el liderazgo ASG.' }
+        };
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                btn.classList.add('text-blue-100', 'hover:bg-blue-800', 'hover:text-white');
+                
+                const icon = btn.querySelector('.icon-active');
+                if(icon) {
+                    icon.classList.remove('text-blue-200');
+                    icon.classList.add('text-blue-300');
+                }
+            });
+
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.remove('text-blue-100', 'hover:bg-blue-800', 'hover:text-white');
+            activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+            
+            const activeIcon = activeBtn.querySelector('.icon-active');
+            if(activeIcon) {
+                activeIcon.classList.remove('text-blue-300');
+                activeIcon.classList.add('text-blue-200');
+            }
+
+            document.getElementById('header-title').innerText = tabTitles[tabId].title;
+            document.getElementById('header-subtitle').innerText = tabTitles[tabId].subtitle;
+        }
+    </script>
+</body>
+</html>
